@@ -1,0 +1,85 @@
+[
+  {
+    "ContainingType": "IskolaiEszkoz.API.Controllers.EszkozController",
+    "Method": "OsszesLekerese",
+    "RelativePath": "api/eszkozok",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[IskolaiEszkoz.API.Model.Eszkoz, IskolaiEszkoz.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "IskolaiEszkoz.API.Controllers.EszkozController",
+    "Method": "Letrehozas",
+    "RelativePath": "api/eszkozok",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eszkoz",
+        "Type": "IskolaiEszkoz.API.Model.Eszkoz",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "IskolaiEszkoz.API.Controllers.EszkozController",
+    "Method": "Modositas",
+    "RelativePath": "api/eszkozok/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "eszkoz",
+        "Type": "IskolaiEszkoz.API.Model.Eszkoz",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IskolaiEszkoz.API.Controllers.EszkozController",
+    "Method": "Torles",
+    "RelativePath": "api/eszkozok/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EszközTár</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+:root {
+    --navy: #122033;
+    --navy-2: #1b2b43;
+    --blue: #2563d8;
+    --blue-dark: #174ea6;
+    --page: #f5f7fa;
+    --white: #ffffff;
+    --text: #1b2636;
+    --muted: #6b7789;
+    --line: #e2e7ee;
+    --soft: #f8fafc;
+    --green: #16825c;
+    --green-bg: #eaf7f1;
+    --red: #b63c3c;
+    --red-bg: #fff0f0;
+    --amber: #a36a0a;
+    --amber-bg: #fff6e8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--page);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.55;
+}
+
+a {
+    text-decoration: none;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, .97);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    min-height: 76px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--navy) !important;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.logo {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: var(--navy);
+    color: white;
+    font-size: 20px;
+}
+
+.nav-link {
+    color: #526073 !important;
+    font-weight: 650;
+}
+
+.nav-link:hover {
+    color: var(--blue) !important;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+    color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 540px;
+    height: 540px;
+    right: -190px;
+    top: -210px;
+    border-radius: 50%;
+    background: rgba(64, 122, 219, .16);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    right: 16%;
+    bottom: -250px;
+    border-radius: 50%;
+    background: rgba(31, 95, 191, .13);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-inner {
+    min-height: 510px;
+    display: flex;
+    align-items: center;
+    padding: 70px 0;
+}
+
+.hero-copy {
+    max-width: 790px;
+}
+
+.hero-label {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #abc6ef;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin: 0 0 24px;
+    font-size: clamp(46px, 6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -2.5px;
+    font-weight: 850;
+}
+
+.hero p {
+    max-width: 690px;
+    margin: 0 0 30px;
+    color: #c7d2e2;
+    font-size: 19px;
+    line-height: 1.75;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn-primary-main {
+    padding: 12px 19px;
+    border: 1px solid #ffffff;
+    border-radius: 9px;
+    background: white;
+    color: var(--navy);
+    font-weight: 750;
+}
+
+.btn-primary-main:hover {
+    background: #eef3fa;
+    color: var(--navy);
+}
+
+.btn-outline-hero {
+    padding: 12px 19px;
+    border: 1px solid rgba(255, 255, 255, .28);
+    border-radius: 9px;
+    color: white;
+    font-weight: 700;
+}
+
+.btn-outline-hero:hover {
+    background: rgba(255, 255, 255, .08);
+    color: white;
+}
+
+.section {
+    padding: 88px 0;
+}
+
+.section-white {
+    background: white;
+}
+
+.section-heading {
+    max-width: 740px;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    margin: 0 0 15px;
+    color: var(--navy);
+    font-size: clamp(34px, 4vw, 48px);
+    letter-spacing: -1.3px;
+    font-weight: 830;
+}
+
+.section-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+.about {
+    border-bottom: 1px solid var(--line);
+}
+
+.about-content {
+    max-width: 880px;
+}
+
+.about-content p {
+    margin: 0 0 18px;
+    color: #59677a;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.management-shell {
+    overflow: hidden;
+    border: 1px solid #dce2ea;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 14px 42px rgba(21, 39, 65, .06);
+}
+
+.management-top {
+    padding: 24px 26px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.management-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.management-title h3 {
+    margin: 0;
+    color: var(--navy);
+    font-size: 25px;
+    font-weight: 820;
+}
+
+.management-title p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.nav-pills {
+    gap: 5px;
+}
+
+.nav-pills .nav-link {
+    margin-bottom: -1px;
+    padding: 10px 14px !important;
+    border-radius: 8px 8px 0 0;
+    color: #687486 !important;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.nav-pills .nav-link.active {
+    background: var(--navy);
+    color: white !important;
+}
+
+.management-body {
+    padding: 26px;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    position: relative;
+    min-width: 300px;
+}
+
+.search-box i {
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    transform: translateY(-50%);
+    color: #8b97a6;
+}
+
+.search-box input {
+    padding-left: 38px;
+}
+
+.form-control,
+.form-select {
+    min-height: 44px;
+    border: 1px solid #d7dde6;
+    border-radius: 9px;
+    background: white;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #83ace7;
+    box-shadow: 0 0 0 3px rgba(37, 99, 216, .09);
+}
+
+.table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+}
+
+.data-table {
+    min-width: 1180px;
+    margin: 0;
+}
+
+.data-table thead th {
+    padding: 12px 13px;
+    background: #f7f9fc;
+    color: #778395;
+    border-bottom: 1px solid var(--line);
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: .45px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.data-table tbody td {
+    padding: 12px 13px;
+    border-color: #edf0f4;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.state {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.state.ok {
+    background: var(--green-bg);
+    color: var(--green);
+}
+
+.state.bad {
+    background: var(--red-bg);
+    color: var(--red);
+}
+
+.state.mid {
+    background: var(--amber-bg);
+    color: var(--amber);
+}
+
+.action-link {
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.action-link:hover {
+    color: var(--blue-dark);
+}
+
+.form-panel {
+    max-width: 930px;
+}
+
+.form-label {
+    margin-bottom: 7px;
+    color: #435164;
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.form-help {
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.edit-loader {
+    padding: 18px;
+    margin-bottom: 22px;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    background: #fafbfd;
+}
+
+.delete-box {
+    max-width: 620px;
+    padding: 24px;
+    border: 1px solid #edcfcf;
+    border-radius: 12px;
+    background: #fffafa;
+}
+
+.contact-section {
+    background: var(--navy);
+    color: white;
+}
+
+.contact-section .section-heading h2 {
+    color: white;
+}
+
+.contact-section .section-heading p {
+    color: #bdc9d9;
+}
+
+.contact-info {
+    display: grid;
+    gap: 15px;
+    margin-top: 28px;
+}
+
+.contact-info div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #c8d2df;
+}
+
+.contact-info i {
+    width: 39px;
+    height: 39px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: rgba(255,255,255,.08);
+    color: #a9c4ea;
+}
+
+.contact-card {
+    padding: 28px;
+    border-radius: 15px;
+    background: white;
+    color: var(--text);
+}
+
+.impressum {
+    background: #edf1f5;
+}
+
+.impressum-box {
+    padding: 27px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: white;
+}
+
+.impressum-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.impressum-grid div {
+    padding: 14px;
+    border-radius: 9px;
+    background: #f8fafc;
+}
+
+.impressum-grid small {
+    display: block;
+    margin-bottom: 3px;
+    color: #7b8797;
+}
+
+.footer {
+    padding: 32px 0;
+    background: #0b1626;
+    color: #9caabd;
+}
+
+.footer strong {
+    color: white;
+}
+
+.footer a {
+    margin-left: 17px;
+    color: #c4cfdb;
+    font-size: 13px;
+}
+
+.alert {
+    border-radius: 9px;
+}
+
+@media (max-width: 991px) {
+    .hero-inner {
+        min-height: auto;
+        padding: 72px 0;
+    }
+
+    .impressum-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .section {
+        padding: 68px 0;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .management-top,
+    .management-body {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .management-title {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .search-box {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .impressum-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer a {
+        margin-left: 0;
+        margin-right: 14px;
+    }
+}
+
+
+.crud-block {
+    border-bottom: 1px solid var(--line);
+}
+
+.crud-block:last-child {
+    border-bottom: 0;
+}
+
+.crud-block-head {
+    padding: 26px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--line);
+}
+
+.crud-block-head > div {
+    position: relative;
+    padding-left: 46px;
+}
+
+.crud-number {
+    position: absolute;
+    left: 0;
+    top: 1px;
+
+    width: 32px;
+    height: 32px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: var(--navy);
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.crud-block-head h3 {
+    margin: 0 0 4px;
+    color: var(--navy);
+    font-size: 22px;
+    font-weight: 820;
+}
+
+.crud-block-head p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.crud-block-body {
+    padding: 26px;
+}
+
+#modositasBlokk {
+    scroll-margin-top: 95px;
+}
+
+@media (max-width: 767px) {
+    .crud-block-head,
+    .crud-block-body {
+        padding: 20px 18px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#kezdolap">
+                    <span class="logo"><i class="bi bi-pc-display-horizontal"></i></span>
+                    EszközTár
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#kezdolap">Kezdőlap</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#bemutatkozas">Bemutatkozás</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#eszkozok">Eszközök</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#kapcsolat">Kapcsolat</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#impresszum">Impresszum</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="kezdolap" class="hero">
+            <div class="container hero-inner">
+                <div class="hero-copy">
+                    <span class="hero-label">Iskolai eszköznyilvántartás</span>
+                    <h1>Az intézmény eszközei egy helyen.</h1>
+                    <p>
+                        Az EszközTár az informatikai és oktatástechnikai eszközök
+                        nyilvántartására, keresésére és kezelésére szolgál.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn-primary-main" href="#eszkozok">Eszközök megtekintése</a>
+                        <a class="btn-outline-hero" href="#kapcsolat">Kapcsolat</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="bemutatkozas" class="section section-white about">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Az EszközTárról</h2>
+                </div>
+
+                <div class="about-content">
+                    <p>
+                        A rendszer az intézményben használt eszközök egységes nyilvántartását segíti.
+                        Egy helyen kezelhetők a legfontosabb adatok, többek között a leltári szám,
+                        a kategória, a gyártó, a terem, az állapot és a beszerzési adatok.
+                    </p>
+
+                    <p>
+                        A nyilvántartásból gyorsan megkereshető egy adott eszköz, új bejegyzés vehető fel,
+                        valamint a meglévő adatok módosíthatók vagy szükség esetén törölhetők.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="eszkozok" class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Eszközök</h2>
+                    <p>Az intézmény nyilvántartásában szereplő eszközök kezelése.</p>
+                </div>
+
+                <div class="management-shell">
+
+                    <!-- ==================================================
+                         1. ESZKÖZLISTA
+                    =================================================== -->
+                    <div class="crud-block" id="listaBlokk">
+
+                        <div class="crud-block-head">
+                            <div>
+                                <span class="crud-number">1</span>
+                                <h3>Eszközlista</h3>
+                                <p>Az intézmény nyilvántartásában szereplő eszközök.</p>
+                            </div>
+                        </div>
+
+                        <div class="crud-block-body">
+
+                            <div class="toolbar">
+
+                                <div class="toolbar-left">
+
+                                    <div class="search-box">
+                                        <i class="bi bi-search"></i>
+
+                                        <input
+                                            id="kereses"
+                                            class="form-control"
+                                            type="text"
+                                            placeholder="Keresés név, gyártó vagy terem alapján"
+                                        >
+                                    </div>
+
+                                    <button
+                                        id="lekeresGomb"
+                                        class="btn btn-outline-secondary"
+                                        type="button"
+                                    >
+                                        Frissítés
+                                    </button>
+
+                                </div>
+
+                                <span id="listaDarab" class="small text-secondary"></span>
+
+                            </div>
+
+                            <div id="lekeresUzenet"></div>
+
+                            <div class="table-wrap">
+
+                                <table class="table data-table align-middle">
+
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Név</th>
+                                            <th>Leltári szám</th>
+                                            <th>Kategória</th>
+                                            <th>Gyártó</th>
+                                            <th>Modell</th>
+                                            <th>Terem</th>
+                                            <th>Állapot</th>
+                                            <th>Használatban</th>
+                                            <th>Kölcsönözhető</th>
+                                            <th>Beszerzési ár</th>
+                                            <th>Beszerzés dátuma</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="eszkozTabla"></tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         2. ÚJ ESZKÖZ
+                    =================================================== -->
+                    <div class="crud-block" id="ujBlokk">
+
+                        <div class="crud-block-head">
+                            <div>
+                                <span class="crud-number">2</span>
+                                <h3>Új eszköz felvétele</h3>
+                                <p>Add meg az új eszköz adatait.</p>
+                            </div>
+                        </div>
+
+                        <div class="crud-block-body">
+
+                            <form id="letrehozasForm">
+
+                                <div class="row g-3">
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Név</label>
+                                        <input id="ujNev" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Leltári szám</label>
+                                        <input id="ujLeltariSzam" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Kategória</label>
+                                        <input id="ujKategoria" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Gyártó</label>
+                                        <input id="ujGyarto" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Modell</label>
+                                        <input id="ujModell" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Terem</label>
+                                        <input id="ujTerem" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Állapot</label>
+                                        <input id="ujAllapot" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Beszerzési ár</label>
+                                        <input
+                                            id="ujBeszerzesiAr"
+                                            class="form-control"
+                                            type="number"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Beszerzés dátuma</label>
+                                        <input
+                                            id="ujBeszerzesDatuma"
+                                            class="form-control"
+                                            type="date"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-check form-switch mt-4">
+                                            <input
+                                                id="ujHasznalatbanVan"
+                                                class="form-check-input"
+                                                type="checkbox"
+                                            >
+
+                                            <label class="form-check-label">
+                                                Használatban van
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-check form-switch mt-4">
+                                            <input
+                                                id="ujKolcsonozheto"
+                                                class="form-check-input"
+                                                type="checkbox"
+                                            >
+
+                                            <label class="form-check-label">
+                                                Kölcsönözhető
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <button class="btn btn-primary mt-4" type="submit">
+                                    Eszköz mentése
+                                </button>
+
+                            </form>
+
+                            <div id="letrehozasUzenet" class="mt-3"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         3. MÓDOSÍTÁS
+                    =================================================== -->
+                    <div class="crud-block" id="modositasBlokk">
+
+                        <div class="crud-block-head">
+                            <div>
+                                <span class="crud-number">3</span>
+                                <h3>Eszköz módosítása</h3>
+                                <p>Azonosító alapján töltsd be, majd írd át a kívánt adatokat.</p>
+                            </div>
+                        </div>
+
+                        <div class="crud-block-body">
+
+                            <div class="edit-loader">
+
+                                <div class="row g-3 align-items-end">
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Eszköz ID</label>
+
+                                        <input
+                                            id="modId"
+                                            class="form-control"
+                                            type="number"
+                                            placeholder="pl. 3"
+                                        >
+                                    </div>
+
+                                    <div class="col-md-auto">
+                                        <button
+                                            id="modBetoltesGomb"
+                                            class="btn btn-outline-primary"
+                                            type="button"
+                                        >
+                                            Adatok betöltése
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                                <div id="modBetoltesUzenet" class="mt-3"></div>
+
+                            </div>
+
+                            <form id="modositasForm">
+
+                                <div class="row g-3">
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Név</label>
+                                        <input id="modNev" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Leltári szám</label>
+                                        <input id="modLeltariSzam" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Kategória</label>
+                                        <input id="modKategoria" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Gyártó</label>
+                                        <input id="modGyarto" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Modell</label>
+                                        <input id="modModell" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Terem</label>
+                                        <input id="modTerem" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Állapot</label>
+                                        <input id="modAllapot" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Beszerzési ár</label>
+                                        <input
+                                            id="modBeszerzesiAr"
+                                            class="form-control"
+                                            type="number"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Beszerzés dátuma</label>
+                                        <input
+                                            id="modBeszerzesDatuma"
+                                            class="form-control"
+                                            type="date"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-check form-switch mt-4">
+                                            <input
+                                                id="modHasznalatbanVan"
+                                                class="form-check-input"
+                                                type="checkbox"
+                                            >
+
+                                            <label class="form-check-label">
+                                                Használatban van
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-check form-switch mt-4">
+                                            <input
+                                                id="modKolcsonozheto"
+                                                class="form-check-input"
+                                                type="checkbox"
+                                            >
+
+                                            <label class="form-check-label">
+                                                Kölcsönözhető
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <button class="btn btn-warning mt-4" type="submit">
+                                    Módosítás mentése
+                                </button>
+
+                            </form>
+
+                            <div id="modositasUzenet" class="mt-3"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         4. TÖRLÉS
+                    =================================================== -->
+                    <div class="crud-block" id="torlesBlokk">
+
+                        <div class="crud-block-head">
+                            <div>
+                                <span class="crud-number">4</span>
+                                <h3>Eszköz törlése</h3>
+                                <p>Add meg a törölni kívánt eszköz azonosítóját.</p>
+                            </div>
+                        </div>
+
+                        <div class="crud-block-body">
+
+                            <form id="torlesForm">
+
+                                <div class="row g-3 align-items-end">
+
+                                    <div class="col-md-4">
+                                        <label class="form-label">Eszköz ID</label>
+                                        <input
+                                            id="torlesId"
+                                            class="form-control"
+                                            type="number"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="col-md-auto">
+                                        <button class="btn btn-danger" type="submit">
+                                            Törlés
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                            <div id="torlesUzenet" class="mt-3"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+        </section>
+
+
+        <section id="kapcsolat" class="section contact-section">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+
+                    <div class="col-lg-5">
+                        <div class="section-heading mb-0">
+                            <h2>Kapcsolat</h2>
+                            <p>
+                                Az EszközTárral kapcsolatos kérdésekkel az alábbi
+                                elérhetőségeken lehet kapcsolatba lépni.
+                            </p>
+                        </div>
+
+                        <div class="contact-info">
+                            <div><i class="bi bi-envelope"></i><span>info@iskola.hu</span></div>
+                            <div><i class="bi bi-telephone"></i><span>+36 1 234 5678</span></div>
+                            <div><i class="bi bi-geo-alt"></i><span>1111 Budapest, Iskola utca 1.</span></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="contact-card">
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Név</label>
+                                        <input class="form-control">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">E-mail</label>
+                                        <input class="form-control" type="email">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Üzenet</label>
+                                        <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-dark" type="button">
+                                            Üzenet küldése
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section id="impresszum" class="section impressum">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Impresszum</h2>
+                </div>
+
+                <div class="impressum-box">
+                    <div class="impressum-grid">
+                        <div>
+                            <small>Weboldal</small>
+                            <strong>EszközTár</strong>
+                        </div>
+
+                        <div>
+                            <small>Üzemeltető</small>
+                            <strong>Minta Technikum</strong>
+                        </div>
+
+                        <div>
+                            <small>Kapcsolat</small>
+                            <strong>info@iskola.hu</strong>
+                        </div>
+
+                        <div>
+                            <small>Szolgáltatás</small>
+                            <strong>Eszköznyilvántartás</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-3">
+            <div>
+                <strong>EszközTár</strong>
+                <div class="small">Iskolai eszköznyilvántartás</div>
+            </div>
+
+            <div>
+                <a href="#kezdolap">Kezdőlap</a>
+                <a href="#eszkozok">Eszközök</a>
+                <a href="#kapcsolat">Kapcsolat</a>
+                <a href="#impresszum">Impresszum</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+let eszkozok = [
+    {id:1, nev:"Tanári laptop", leltariSzam:"IT-001", kategoria:"Laptop", gyarto:"Dell", modell:"Latitude 5420", terem:"A304", allapot:"Jó", hasznalatbanVan:true, kolcsonozheto:true, beszerzesiAr:280000, beszerzesDatuma:"2022-09-01"},
+    {id:2, nev:"Diák laptop 1", leltariSzam:"IT-002", kategoria:"Laptop", gyarto:"Lenovo", modell:"ThinkPad E14", terem:"A304", allapot:"Jó", hasznalatbanVan:true, kolcsonozheto:true, beszerzesiAr:250000, beszerzesDatuma:"2023-08-15"},
+    {id:3, nev:"Diák laptop 2", leltariSzam:"IT-003", kategoria:"Laptop", gyarto:"Lenovo", modell:"ThinkPad E14", terem:"A304", allapot:"Közepes", hasznalatbanVan:true, kolcsonozheto:true, beszerzesiAr:250000, beszerzesDatuma:"2023-08-15"},
+    {id:4, nev:"Asztali gép 1", leltariSzam:"PC-001", kategoria:"Asztali gép", gyarto:"Dell", modell:"OptiPlex 7090", terem:"A304", allapot:"Jó", hasznalatbanVan:true, kolcsonozheto:false, beszerzesiAr:320000, beszerzesDatuma:"2021-09-01"},
+    {id:5, nev:"Monitor 1", leltariSzam:"MON-001", kategoria:"Monitor", gyarto:"Samsung", modell:"S24R350", terem:"A304", allapot:"Jó", hasznalatbanVan:true, kolcsonozheto:false, beszerzesiAr:55000, beszerzesDatuma:"2022-01-20"},
+    {id:6, nev:"Monitor 2", leltariSzam:"MON-002", kategoria:"Monitor", gyarto:"Samsung", modell:"S24R350", terem:"A304", allapot:"Hibás", hasznalatbanVan:false, kolcsonozheto:false, beszerzesiAr:55000, beszerzesDatuma:"2022-01-20"},
+    {id:7, nev:"Projektor", leltariSzam:"PROJ-001", kategoria:"Projektor", gyarto:"Epson", modell:"EB-X49", terem:"A022", allapot:"Jó", hasznalatbanVan:true, kolcsonozheto:false, beszerzesiAr:220000, beszerzesDatuma:"2021-10-11"},
+    {id:8, nev:"Router 1", leltariSzam:"NET-001", kategoria:"Hálózati eszköz", gyarto:"MikroTik", modell:"hAP ax2", terem:"A315", allapot:"Jó", hasznalatbanVan:true, kolcsonozheto:true, beszerzesiAr:50000, beszerzesDatuma:"2024-09-05"}
+];
+
+const allapotOsztaly = (allapot) => {
+    if (allapot === "Hibás") {
+        return "bad";
+    }
+
+    if (allapot === "Közepes") {
+        return "mid";
+    }
+
+    return "ok";
+};
+
+const eszkozokMegjelenitese = (lista = eszkozok) => {
+
+    const tabla = document.getElementById("eszkozTabla");
+
+    tabla.innerHTML = "";
+
+    lista.forEach(eszkoz => {
+
+        tabla.innerHTML += `
+            <tr>
+                <td>${eszkoz.id}</td>
+                <td><strong>${eszkoz.nev}</strong></td>
+                <td>${eszkoz.leltariSzam}</td>
+                <td>${eszkoz.kategoria}</td>
+                <td>${eszkoz.gyarto}</td>
+                <td>${eszkoz.modell}</td>
+                <td>${eszkoz.terem}</td>
+                <td><span class="state ${allapotOsztaly(eszkoz.allapot)}">${eszkoz.allapot}</span></td>
+                <td>${eszkoz.hasznalatbanVan ? "Igen" : "Nem"}</td>
+                <td>${eszkoz.kolcsonozheto ? "Igen" : "Nem"}</td>
+                <td>${eszkoz.beszerzesiAr.toLocaleString("hu-HU")} Ft</td>
+                <td>${eszkoz.beszerzesDatuma}</td>
+                <td>
+                    <button class="action-link szerkesztesGomb" data-id="${eszkoz.id}">
+                        Szerkesztés
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("listaDarab").innerText =
+        `${lista.length} eszköz`;
+
+    szerkesztesGombokBeallitasa();
+};
+
+
+const szerkesztesGombokBeallitasa = () => {
+
+    document.querySelectorAll(".szerkesztesGomb").forEach(gomb => {
+
+        gomb.addEventListener("click", () => {
+
+            document.getElementById("modId").value = gomb.dataset.id;
+
+            document.getElementById("modositasBlokk")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            modositandoEszkozBetoltese();
+        });
+    });
+};
+
+
+const eszkozokLekerese = () => {
+
+    eszkozokMegjelenitese();
+
+    document.getElementById("lekeresUzenet").innerHTML =
+        "";
+};
+
+
+const eszkozLetrehozasa = (event) => {
+
+    event.preventDefault();
+
+    const ujId =
+        eszkozok.length === 0
+            ? 1
+            : Math.max(...eszkozok.map(eszkoz => eszkoz.id)) + 1;
+
+    const ujEszkoz = {
+        id: ujId,
+        nev: document.getElementById("ujNev").value,
+        leltariSzam: document.getElementById("ujLeltariSzam").value,
+        kategoria: document.getElementById("ujKategoria").value,
+        gyarto: document.getElementById("ujGyarto").value,
+        modell: document.getElementById("ujModell").value,
+        terem: document.getElementById("ujTerem").value,
+        allapot: document.getElementById("ujAllapot").value,
+        hasznalatbanVan: document.getElementById("ujHasznalatbanVan").checked,
+        kolcsonozheto: document.getElementById("ujKolcsonozheto").checked,
+        beszerzesiAr: Number(document.getElementById("ujBeszerzesiAr").value),
+        beszerzesDatuma: document.getElementById("ujBeszerzesDatuma").value
+    };
+
+    eszkozok.push(ujEszkoz);
+
+    eszkozokMegjelenitese();
+
+    document.getElementById("letrehozasForm").reset();
+
+    document.getElementById("letrehozasUzenet").innerHTML =
+        '<div class="alert alert-success">Az eszköz sikeresen mentve.</div>';
+};
+
+
+const modositandoEszkozBetoltese = () => {
+
+    const id = Number(document.getElementById("modId").value);
+
+    const eszkoz =
+        eszkozok.find(eszkoz => eszkoz.id === id);
+
+    if (eszkoz === undefined) {
+
+        document.getElementById("modBetoltesUzenet").innerHTML =
+            '<div class="alert alert-danger">Nincs ilyen azonosítójú eszköz.</div>';
+
+        return;
+    }
+
+    document.getElementById("modNev").value = eszkoz.nev;
+    document.getElementById("modLeltariSzam").value = eszkoz.leltariSzam;
+    document.getElementById("modKategoria").value = eszkoz.kategoria;
+    document.getElementById("modGyarto").value = eszkoz.gyarto;
+    document.getElementById("modModell").value = eszkoz.modell;
+    document.getElementById("modTerem").value = eszkoz.terem;
+    document.getElementById("modAllapot").value = eszkoz.allapot;
+    document.getElementById("modBeszerzesiAr").value = eszkoz.beszerzesiAr;
+    document.getElementById("modBeszerzesDatuma").value = eszkoz.beszerzesDatuma;
+    document.getElementById("modHasznalatbanVan").checked = eszkoz.hasznalatbanVan;
+    document.getElementById("modKolcsonozheto").checked = eszkoz.kolcsonozheto;
+
+    document.getElementById("modBetoltesUzenet").innerHTML =
+        "";
+};
+
+
+const eszkozModositasa = (event) => {
+
+    event.preventDefault();
+
+    const id = Number(document.getElementById("modId").value);
+
+    const eszkoz =
+        eszkozok.find(eszkoz => eszkoz.id === id);
+
+    if (eszkoz === undefined) {
+
+        document.getElementById("modositasUzenet").innerHTML =
+            '<div class="alert alert-danger">Nincs ilyen azonosítójú eszköz.</div>';
+
+        return;
+    }
+
+    eszkoz.nev = document.getElementById("modNev").value;
+    eszkoz.leltariSzam = document.getElementById("modLeltariSzam").value;
+    eszkoz.kategoria = document.getElementById("modKategoria").value;
+    eszkoz.gyarto = document.getElementById("modGyarto").value;
+    eszkoz.modell = document.getElementById("modModell").value;
+    eszkoz.terem = document.getElementById("modTerem").value;
+    eszkoz.allapot = document.getElementById("modAllapot").value;
+    eszkoz.beszerzesiAr = Number(document.getElementById("modBeszerzesiAr").value);
+    eszkoz.beszerzesDatuma = document.getElementById("modBeszerzesDatuma").value;
+    eszkoz.hasznalatbanVan = document.getElementById("modHasznalatbanVan").checked;
+    eszkoz.kolcsonozheto = document.getElementById("modKolcsonozheto").checked;
+
+    eszkozokMegjelenitese();
+
+    document.getElementById("modositasUzenet").innerHTML =
+        '<div class="alert alert-success">A módosítások elmentve.</div>';
+};
+
+
+const eszkozTorlese = (event) => {
+
+    event.preventDefault();
+
+    const id = Number(document.getElementById("torlesId").value);
+
+    const index =
+        eszkozok.findIndex(eszkoz => eszkoz.id === id);
+
+    if (index === -1) {
+
+        document.getElementById("torlesUzenet").innerHTML =
+            '<div class="alert alert-danger">Nincs ilyen azonosítójú eszköz.</div>';
+
+        return;
+    }
+
+    eszkozok.splice(index, 1);
+
+    eszkozokMegjelenitese();
+
+    document.getElementById("torlesForm").reset();
+
+    document.getElementById("torlesUzenet").innerHTML =
+        '<div class="alert alert-success">Az eszköz törölve.</div>';
+};
+
+
+const kereses = () => {
+
+    const szoveg =
+        document.getElementById("kereses").value.toLowerCase();
+
+    const talalatok =
+        eszkozok.filter(eszkoz =>
+            eszkoz.nev.toLowerCase().includes(szoveg) ||
+            eszkoz.gyarto.toLowerCase().includes(szoveg) ||
+            eszkoz.terem.toLowerCase().includes(szoveg)
+        );
+
+    eszkozokMegjelenitese(talalatok);
+};
+
+
+document.getElementById("lekeresGomb")
+    .addEventListener("click", eszkozokLekerese);
+
+document.getElementById("kereses")
+    .addEventListener("input", kereses);
+
+document.getElementById("letrehozasForm")
+    .addEventListener("submit", eszkozLetrehozasa);
+
+document.getElementById("modBetoltesGomb")
+    .addEventListener("click", modositandoEszkozBetoltese);
+
+document.getElementById("modositasForm")
+    .addEventListener("submit", eszkozModositasa);
+
+document.getElementById("torlesForm")
+    .addEventListener("submit", eszkozTorlese);
+
+
+eszkozokMegjelenitese();
+</script>
+</body>
+</html>

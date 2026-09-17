@@ -1,0 +1,49 @@
+@host = http://localhost:5242
+
+### 1. Összes eszköz lekérése
+GET {{host}}/api/eszkozok
+
+###
+
+### 2. Új eszköz létrehozása
+POST {{host}}/api/eszkozok
+Content-Type: application/json
+
+{
+  "nev": "Teszt laptop",
+  "leltariSzam": "TEST-001",
+  "kategoria": "Laptop",
+  "gyarto": "Dell",
+  "modell": "Latitude 5550",
+  "terem": "A304",
+  "allapot": "Jó",
+  "hasznalatbanVan": true,
+  "kolcsonozheto": true,
+  "beszerzesiAr": 250000,
+  "beszerzesDatuma": "2026-09-15"
+}
+
+###
+
+### 3. Eszköz módosítása
+PUT {{host}}/api/eszkozok/1
+Content-Type: application/json
+
+{
+  "nev": "Módosított tanári laptop",
+  "leltariSzam": "IT-001",
+  "kategoria": "Laptop",
+  "gyarto": "Dell",
+  "modell": "Latitude 5420",
+  "terem": "A315",
+  "allapot": "Jó",
+  "hasznalatbanVan": true,
+  "kolcsonozheto": true,
+  "beszerzesiAr": 280000,
+  "beszerzesDatuma": "2022-09-01"
+}
+
+###
+
+### 4. Eszköz törlése
+DELETE {{host}}/api/eszkozok/20
